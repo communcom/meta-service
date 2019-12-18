@@ -13,6 +13,10 @@ module.exports = MongoDB.makeModel(
             default: 0,
             required: true,
         },
+        viewers: {
+            type: [String],
+            default: [],
+        },
     },
     {
         index: [
@@ -22,6 +26,11 @@ module.exports = MongoDB.makeModel(
                 },
                 options: {
                     unique: true,
+                },
+            },
+            {
+                fields: {
+                    viewers: 1,
                 },
             },
         ],

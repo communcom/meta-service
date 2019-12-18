@@ -38,7 +38,7 @@ class ViewCount extends BasicController {
         return post.viewCount;
     }
 
-    async recordPostView({ postLink }) {
+    async recordPostView({ postLink }, { userId }) {
         if (!postLink) {
             throw {
                 code: 1110,
@@ -46,7 +46,15 @@ class ViewCount extends BasicController {
             };
         }
 
-        await Post.updateOne({ postLink }, { $inc: { viewCount: 1 } }, { upsert: true });
+        const hasViewed = await Post.findOne({ postLink, viewers: userId });
+
+        if (!hasViewed) {
+            await Post.updateOne(
+                { postLink },
+                { $inc: { viewCount: 1 }, $addToSet: { viewers: userId } },
+                { upsert: true }
+            );
+        }
     }
 }
 

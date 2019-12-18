@@ -1,4 +1,4 @@
-const core = require('gls-core-service');
+const core = require('cyberway-core-service');
 const { Post } = require('../model');
 
 const BasicController = core.controllers.Basic;

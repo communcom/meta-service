@@ -1,4 +1,4 @@
-const core = require('gls-core-service');
+const core = require('cyberway-core-service');
 const moment = require('moment');
 const { View } = require('../model');
 

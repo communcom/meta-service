@@ -1,7 +1,7 @@
 version: '3.6'
 services:
   node:
-    container_name: meta_node
+    container_name: meta-node
     restart: always
     networks:
       - services-tier
@@ -17,7 +17,7 @@ services:
       - .env
 
   mongo:
-    container_name: meta_mongo
+    container_name: meta-mongo
     image: mongo:4
     restart: always
     networks:

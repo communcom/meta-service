@@ -1,4 +1,4 @@
-const core = require('gls-core-service');
+const core = require('cyberway-core-service');
 const env = require('./env');
 const Connector = require('./services/Connector');
 const Cleaner = require('./services/Cleaner');

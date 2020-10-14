@@ -7,8 +7,8 @@
     "start": "node src/index.js"
   },
   "keywords": [],
-  "author": "golos.io",
-  "license": "ISC",
+  "author": "commun",
+  "license": "MIT",
   "dependencies": {
     "cyberway-core-service": "^3.55.6",
     "moment": "^2.23.0"

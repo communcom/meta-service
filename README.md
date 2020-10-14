@@ -1,44 +1,20 @@
 # META-SERVICE
 
-Сервис хранящий мета данные, в частности количество просмотров постов.
+#### Clone the repository
 
-##### API JSON-RPC:
-
-```
-getPostsViewCount:            // Получить количество просмотров поста
-    postLinks <string[]>      // Строки в формате author/perm-link
-
-recordPostView:               // Записать просмотр
-    postLink <string>         // Строка в формате author/perm-link
-    fingerPrint <string>      // Строка являющаяся фингер принтом браузера
-    clientRequestIp <string>  // Строка, IPv4 or IPv6 (выставляет facade-service)
-
-markUserOnline:               // Пометить юзера как онлайн
-    user <string>             // Имя пользователя
-
-getUserLastOnline:            // Получить время (timestamp) последного онлайна пользователя
-    user <string>             // Имя пользователя
+```bash
+git clone https://github.com/communcom/meta-service.git
+cd meta-service
 ```
 
-Возможные переменные окружения `ENV`:
+#### Create docker-compose file
 
--   `GLS_METRICS_HOST` _(обязательно)_ - адрес хоста для метрик.  
-    Дефолтное значение - `0.0.0.0`
+```bash
+cp docker-compose.example.yml docker-compose.yml 
+```
 
--   `GLS_METRICS_PORT` _(обязательно)_ - адрес порта для метрик.  
-    Дефолтное значение - `9777`
+#### Run
 
--   `GLS_CONNECTOR_HOST` _(обязательно)_ - адрес, который будет использован для входящих подключений связи микросервисов.  
-    Дефолтное значение - `0.0.0.0`
-
--   `GLS_CONNECTOR_PORT` _(обязательно)_ - адрес порта, который будет использован для входящих подключений связи микросервисов.  
-    Дефолтное значение - `3000`
-
--   `GLS_MONGO_CONNECT` - строка подключения к базе MongoDB.  
-    Дефолтное значение - `mongodb://mongo/admin`
-
--   `$GLS_MONGO_EXTERNAL_PORT` - порт подключения к базе данных из внешних сервисов (например - метрики).  
-    Дефолтное значение - `27017`
-
-Для запуска сервиса достаточно вызвать команду `docker-compose up --build` в корне проекта, предварительно указав
-необходимые `ENV` переменные.
+```bash
+docker-compose up -d --build
+```
